@@ -10,26 +10,6 @@ provider "azurerm" {
   features {}
 }
 
-locals {
-  master_hostnames =[ 
-    "linuxvm019c"
-  ]
-  worker_hostnames = [
-    "linuxvm0191c",
-    "linuxvm0192c"
-  ]
-  master_ips = [
-   "13.81.26.46",
-  ]
-  worker_ips = [
-    "13.73.184.45",
-    "13.73.184.42"
-  ]
-
-  master_server_count = 1
-  worker_server_count = 2
-}
-
 resource "azurerm_resource_group" "rg" {
   name = "terraform-ansible-kubernetes"
   location = "East US"
@@ -329,10 +309,10 @@ resource "azurerm_linux_virtual_machine" "linuxvm0192c" {
 }
 
 # Null resource for run the ansible playbooks
-resource "null_resource" "kubernetes" {
-  # Run the ansible playbook
-  provisioner "local-exec" {
-    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts.yaml ansible_kubernetes.yaml"
-  }
-}
+# resource "null_resource" "kubernetes" {
+#   # Run the ansible playbook
+#   provisioner "local-exec" {
+#     command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts.yaml ansible_kubernetes.yaml"
+#   }
+# }
 # Your Terraform code goes here...
