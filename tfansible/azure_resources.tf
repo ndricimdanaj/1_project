@@ -309,10 +309,10 @@ resource "azurerm_linux_virtual_machine" "linuxvm0192c" {
 }
 
 # Null resource for run the ansible playbooks
-# resource "null_resource" "kubernetes" {
-#   # Run the ansible playbook
-#   provisioner "local-exec" {
-#     command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts.yaml ansible_kubernetes.yaml"
-#   }
-# }
+resource "null_resource" "kubernetes" {
+  # Run the ansible playbook
+  provisioner "local-exec" {
+    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts.yaml ansible_kubernetes.yaml"
+  }
+}
 # Your Terraform code goes here...

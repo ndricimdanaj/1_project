@@ -33,6 +33,8 @@
 - hosts: master
   gather_facts: yes
   become: yes
+  environment:
+    KUBE_CONFIG: "~/admin.conf"
   tasks:
     - name: "copy configuration to user directory"
       fetch:

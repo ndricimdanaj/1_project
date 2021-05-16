@@ -17,7 +17,7 @@ kube-cluster:
 
 jenkins:
   hosts:
-    host1:
+    host4:
       ansible_host: "40.113.247.15"
   vars:
     ansible_user: "ndricimdanaj"
